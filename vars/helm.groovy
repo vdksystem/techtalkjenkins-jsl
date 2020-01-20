@@ -13,7 +13,8 @@ def upgrade(String name, String chart = '', String args = '', String cluster = '
         def clusterUrl = defaults.k8s[cluster.toLowerCase()].clusterUrl
         println(credentialsId)
         println(clusterUrl)
-        withKubeConfig([credentialsId: credentialsId, serverUrl: clusterUrl]) {
+        withKubeConfig([credentialsId: credentialsId,
+                        serverUrl: clusterUrl]) {
             sh "helm upgrade -i ${name} ${chartName} ${args}"
         }
     } else {
