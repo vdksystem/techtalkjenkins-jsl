@@ -2,7 +2,7 @@ def repoUpdate() {
     sh 'helm repo update'
 }
 
-def upgrade(String name, String chart = '', String args = '') {
+def upgrade(String name, String chart = '', String args = '', def cfg = [:]) {
     def chartName = chart ? chart : "${name}/"
 
     if (cfg) {
