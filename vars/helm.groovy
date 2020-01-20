@@ -4,7 +4,8 @@ def repoUpdate() {
 
 def upgrade(String name, String chart = '', String args = '', def cfg = [:]) {
     def chartName = chart ? chart : "${name}/"
-
+    echo chart
+    echo chartName
     if (cfg) {
         echo "Config is not empty"
         withKubeConfig([credentialsId: cfg.credentialsId, serverUrl: cfg.clusterUrl]) {
